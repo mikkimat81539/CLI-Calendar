@@ -1,4 +1,4 @@
-import re, pdb
+import re, pdb, string
 
 # See if user input matches string in months list
 def similarMonths(months:list[str], pickMonth) -> list[str]:
@@ -27,12 +27,23 @@ def main():
 	# MONTHS
 	months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
 
+	try:	
+		leapYr = int(pickYear) % 4 # leap year formula
+
+	except ValueError:
+		print("Invalid Input\n")
+		return
 
 	try:
-		leapYr = int(pickYear) % 4 # leap year formula
 		if len(pickYear) != 4:
 			print("Invalid Input\n")
-			main()
+			return
+
+		for i in pickYear:
+			if i in string.ascii_letters:
+				print("Invalid Input\n")
+				return
+
 	except ValueError:
 		print("Invalid Input\n")	
 		main()
