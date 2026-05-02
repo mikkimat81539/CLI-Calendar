@@ -72,6 +72,6 @@ def main():
 		timeFrame = similarMonths(months, pickMonth), pickYear
 		dayDisplay = dayData(days, timeFrame, leapYr)
 
-		print(incrementDays(dayDisplay))
+		print(timeFrame, f"Day: {incrementDays(dayDisplay)}")
 
 main()
