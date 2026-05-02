@@ -11,14 +11,25 @@ def similarMonths(months:list[str], pickMonth) -> list[str]:
 # See if year is a leap year
 def dayData(days:dict[str,int], timeFrame, leapYr) -> dict[str,int]:
 	for key, value in days.items():
-		#breakpoint()	
 		if timeFrame[0] == "FEB" and leapYr == 0:
 			value = 29
-			print(value)
 			return value
 
 		elif timeFrame[0] == key:
 			return value
+
+def incrementDays(dayDisplay):
+	count = 0
+	#print(dayDisplay)
+
+	dayList = []
+
+	for i in range(dayDisplay):
+		count += 1
+		formula = count % (dayDisplay + 1)
+		dayList.append(formula)
+	return dayList
+
 
 def main():
 	# USER INPUT
@@ -59,6 +70,8 @@ def main():
 		main()
 	else:
 		timeFrame = similarMonths(months, pickMonth), pickYear
-		print(timeFrame, f"Days: {dayData(days, timeFrame, leapYr)}")
+		dayDisplay = dayData(days, timeFrame, leapYr)
+
+		print(incrementDays(dayDisplay))
 
 main()
