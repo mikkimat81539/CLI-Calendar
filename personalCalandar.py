@@ -23,10 +23,9 @@ def main():
 	for i in months:
 		same = re.match(i, pickMonth)
 		if same:
-			print(i)
+			# print(i)
+			print(pickMonth, pickYear)
 			break
 
-	else:
-		print(pickMonth, pickYear)
 
 main()
