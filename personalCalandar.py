@@ -30,12 +30,4 @@ def main():
 
 	print(similarMonths(months, pickMonth), pickYear)
 
-	#for i in months:
-		#same = re.match(i, pickMonth)
-		#if same:
-			# print(i)
-			#print(pickMonth, pickYear)
-			#break
-
-
 main()
