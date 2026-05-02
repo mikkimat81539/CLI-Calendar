@@ -7,6 +7,8 @@ def similarMonths(months:list[str], pickMonth) -> list[str]:
 
 		if same:
 			return i
+
+# See if year is a leap year
 def dayData(days:dict[str,int], timeFrame, leapYr) -> dict[str,int]:
 	for key, value in days.items():
 		#breakpoint()	
@@ -22,16 +24,12 @@ def main():
 	# USER INPUT
 	pickYear = input("Enter a year: ")
 
-	# LEAP YEAR FORMULA
-	#leapYr = int(pickYear) % 4
-
 	# MONTHS
 	months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
 
-	#days = {months[0]: 31, months[1]: 28, months[2]: 31, months[3]: 30}
 
 	try:
-		leapYr = int(pickYear) % 4
+		leapYr = int(pickYear) % 4 # leap year formula
 		if len(pickYear) != 4:
 			print("Invalid Input\n")
 			main()
@@ -42,20 +40,14 @@ def main():
 	pickMonth = input("\nEnter a month: ").upper()
 
 	# DAYS
-	days = {months[0]: 31, months[1]: 28, months[2]: 31, months[3]: 30}
+	days = {months[0]: 31, months[1]: 28, months[2]: 31, months[3]: 30, months[4]: 31, months[5]: 30, months[6]: 31, 
+	months[7]: 31, months[8]: 30, months[9]: 31, months[10]: 30, months[11]: 31}
 
 	if similarMonths(months, pickMonth) is None:
 		print("Invalid input\n")
 		main()
 	else:
 		timeFrame = similarMonths(months, pickMonth), pickYear
-		print(timeFrame, dayData(days, timeFrame, leapYr))
-
-
-	#if timeFrame == "FEB" and leapYr == 0:
-		#days[months[1]] = 29
-		#print(days[months[1]])
-	#else:
-		#print(days[months[1]])
+		print(timeFrame, f"Days: {dayData(days, timeFrame, leapYr)}")
 
 main()
