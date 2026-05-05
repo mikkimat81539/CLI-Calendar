@@ -19,16 +19,23 @@ def dayData(days:dict[str,int], timeFrame, leapYr) -> dict[str,int]:
 			return value
 
 def incrementDays(dayDisplay):
-	count = 0
-	#print(dayDisplay)
+	#count = 0
 
+	numStore = []
 	dayList = []
 
-	for i in range(dayDisplay):
-		count += 1
-		formula = count % (dayDisplay + 1)
-		dayList.append(formula)
-	return dayList
+	for i in range(1, dayDisplay + 1):
+		#count += 1
+		#formula = count % (dayDisplay + 1)
+
+		if len(dayList) == 7:
+			numStore.append(dayList)
+			dayList = []
+
+
+		dayList.append(i)
+
+	return numStore, dayList
 
 
 def main():
