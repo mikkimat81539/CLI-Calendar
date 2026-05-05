@@ -25,7 +25,7 @@ def incrementDays(dayDisplay):
 	dayList = []
 	weekList = []
 
-	for i in range(1, dayDisplay + 1):
+	for i in range(1, 42):
 		#count += 1
 		#formula = count % (dayDisplay + 1)
 
@@ -33,6 +33,8 @@ def incrementDays(dayDisplay):
 			numStore.append(dayList)
 			dayList = []
 
+		if i > dayDisplay:
+			i = ""
 
 		dayList.append(i)
 
@@ -45,7 +47,7 @@ def incrementDays(dayDisplay):
 		weekList.append(weeks)
 
 
-	return weekList
+	return weekList, dayList
 
 
 def main():
