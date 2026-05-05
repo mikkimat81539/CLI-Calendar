@@ -23,6 +23,7 @@ def incrementDays(dayDisplay):
 
 	numStore = []
 	dayList = []
+	weekList = []
 
 	for i in range(1, dayDisplay + 1):
 		#count += 1
@@ -35,7 +36,16 @@ def incrementDays(dayDisplay):
 
 		dayList.append(i)
 
-	return numStore, dayList
+	# WEEKS
+	for i in range(0, len(numStore)):
+		weeks = {"MON": numStore[i][0], "TUE": numStore[i][1],
+		"WED": numStore[i][2], "THU": numStore[i][3], 
+		"FRI": numStore[i][4], "SAT": numStore[i][5], "SUN": numStore[i][6]}
+
+		weekList.append(weeks)
+
+
+	return weekList
 
 
 def main():
@@ -68,9 +78,10 @@ def main():
 
 	pickMonth = input("\nEnter a month: ").upper()
 
-	# DAYS
+	# DAYS -- has max days with corresponding month
 	days = {months[0]: 31, months[1]: 28, months[2]: 31, months[3]: 30, months[4]: 31, months[5]: 30, months[6]: 31, 
 	months[7]: 31, months[8]: 30, months[9]: 31, months[10]: 30, months[11]: 31}
+
 
 	if similarMonths(months, pickMonth) is None:
 		print("Invalid input\n")
@@ -79,6 +90,8 @@ def main():
 		timeFrame = similarMonths(months, pickMonth), pickYear
 		dayDisplay = dayData(days, timeFrame, leapYr)
 
-		print(timeFrame, f"Day: {incrementDays(dayDisplay)}")
+		weekDisplay = incrementDays(dayDisplay)
+
+		print(timeFrame, f"Day: {weekDisplay}")
 
 main()
