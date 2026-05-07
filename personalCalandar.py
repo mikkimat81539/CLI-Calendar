@@ -40,9 +40,9 @@ def incrementDays(dayDisplay):
 
 	# WEEKS
 	for i in range(0, len(numStore)): # Add numbers from numStore list and import them to weeks
-		weeks = {"SUN": numStore[i][0], "MON": numStore[i][1],
-		"TUE": numStore[i][2], "WED": numStore[i][3], 
-		"THU": numStore[i][4], "FRI": numStore[i][5], "SAT": numStore[i][6]}
+		weeks = {"Sun": numStore[i][0], "Mon": numStore[i][1],
+		"Tue": numStore[i][2], "Wed": numStore[i][3], 
+		"Thu": numStore[i][4], "Fri": numStore[i][5], "Sat": numStore[i][6]}
 
 		weekList.append(weeks) # add the dictionary into weeksList
 

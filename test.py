@@ -2,14 +2,23 @@
 
 import datetime, re
 
-x = datetime.datetime(2009, 1, 1)
+#x = datetime.datetime(2009, 1, 1)
+#
+#wk = x.strftime("%a")
+#print(wk)
+#
+#userInput = input("Enter a day: ").capitalize()
+#
+#same = re.match(userInput, wk)
+#
+#if same:
+#    print(wk, "It is a match")
 
-wk = x.strftime("%a")
-print(wk)
+weekList = []
 
-userInput = input("Enter a day: ").capitalize()
+for i in range(1, 8):
+	x = datetime.datetime(2008, 6, i)
+	weekList.append(x.strftime("%a"))
 
-same = re.match(userInput, wk)
+print(weekList)
 
-if same:
-    print(wk, "It is a match")
