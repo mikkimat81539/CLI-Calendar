@@ -21,16 +21,12 @@ def dayData(days:dict[str,int], timeFrame, leapYr) -> dict[str,int]:
 
 # This function is created to increment the days and output the days with the weekday
 def incrementDays(dayDisplay):
-	#count = 0
-
 	numStore = []
 	dayList = []
 	weekList = []
 
-	for i in range(1, 42):
-		#count += 1
-		#formula = count % (dayDisplay + 1)
-
+	for i in range(43):
+		i += 1 # The index needs to start at 1 and increment
 		if len(dayList) == 7: # Once the dayList has a length of 7, store data in numStore list and make dayList empty
 			numStore.append(dayList)
 			dayList = []
@@ -48,8 +44,9 @@ def incrementDays(dayDisplay):
 
 		weekList.append(weeks) # add the dictionary into weeksList
 
+	print(f"{numStore}\n")
 
-	return weekList, dayList
+	return weekList
 
 
 def main():
