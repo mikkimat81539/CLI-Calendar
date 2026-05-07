@@ -1,6 +1,6 @@
 import re, pdb, string
 
-#This function is here so that it can take the list of months in the main function and the user input (pickMonth) and output the selected month from the list
+# This function is here so that it can take the list of months in the main function and the user input (pickMonth) and output the selected month from the list
 def similarMonths(months:list[str], pickMonth) -> list[str]:
 	for i in months:
 		same = re.match(i, pickMonth) # This is here just in case the user types whole month
@@ -13,6 +13,8 @@ def similarMonths(months:list[str], pickMonth) -> list[str]:
 def dayData(days:dict[str,int], timeFrame, leapYr) -> dict[str,int]:
 	for key, value in days.items():
 		if timeFrame[0] == "FEB" and leapYr == 0: # If the user inputs feb and a leap year than output 29 days
+		# timeFrame is a tuple so the program grabs the index 0 (months)
+
 			value = 29
 			return value
 
@@ -44,13 +46,11 @@ def incrementDays(dayDisplay):
 
 		weekList.append(weeks) # add the dictionary into weeksList
 
-	print(f"{numStore}\n")
-
 	return weekList
 
 
 def main():
-	# USER INPUT
+	# INPUT YEAR
 	pickYear = input("Enter a year: ")
 
 	# MONTHS
@@ -72,8 +72,9 @@ def main():
 
 	except ValueError:
 		print("Invalid Input\n")	
-		main()
+		return
 
+	# INPUT MONTH
 	pickMonth = input("\nEnter a month: ").upper()
 
 	# DAYS -- has max days with corresponding month (Ex: Jan has 31 days)
@@ -83,7 +84,7 @@ def main():
 
 	if similarMonths(months, pickMonth) is None: # If user does enter a month that is mentioned in the list it will return None
 		print("Invalid input\n")
-		main()
+		return
 	else:
 		timeFrame = similarMonths(months, pickMonth), pickYear # Output month and year that the user inputted
 		dayDisplay = dayData(days, timeFrame, leapYr) # Output the number of days associated with the selected month
