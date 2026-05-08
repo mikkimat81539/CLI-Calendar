@@ -88,6 +88,13 @@ def main():
 		if len(pickYear) != 4: # if user does not enter 4 characters than invalid
 			print("Invalid Input\n")
 			return
+		if int(pickYear) < 1900:
+			print(f"Pick a number greater than {pickYear}")
+			return
+
+		elif int(pickYear) > 2099:
+			print(f"Pick a number less than {pickYear}")
+			return
 
 		for i in pickYear: # if user enters letters than invalid input
 			if i in string.ascii_letters:
