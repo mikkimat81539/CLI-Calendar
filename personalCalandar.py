@@ -27,41 +27,32 @@ def incrementDays(months:list[str], dayDisplay, pickYear, pickMonth) -> list[str
 	numStore = []
 	dayList = []
 	weekList = []
-
 	weekDay = []
 
-#	for i in range(43):
-#		i += 1 # The index needs to start at 1 and increment
-#		if len(dayList) == 7: # Once the dayList has a length of 7, store data in numStore list and make dayList empty
-#			numStore.append(dayList)
-#			dayList = []
-#
-#		if i > dayDisplay: # if i is greated than 29, 30 or 31 than replace with empty string
-#			i = ""
-#
-#		dayList.append(i)
-#
 
-	monthIndex = months.index(pickMonth) + 1
+	monthIndex = months.index(pickMonth) + 1 # this is here to grab the index of the selected month
+	# it is for inputting into the variable x below
 	
-	count = 0
+	count = 0 # this is a placeholder for iterating the days in the loop
 
+	# DAYS
 	for i in range(43):
 		count += 1
-		if count > dayDisplay:
+		if count > dayDisplay: # If count is greater than 28, 29, 30, or 31 replace with empty string
 			i = ""
 			dayList.append(i)
 
 		else:
-			x = datetime.datetime(int(pickYear), int(monthIndex), count)
-			dayList.append(int(x.strftime("%d")))
+			x = datetime.datetime(int(pickYear), int(monthIndex), count) # insert year, month, date
+			dayList.append(int(x.strftime("%d"))) # add the date to the dayList
 
 
 		if len(dayList) == 7:
 			numStore.append(dayList)
 			dayList = []
 
-	count = 0
+	count = 0 # Restart the count back to zero
+
 	# WEEKS
 	for i in range(0, 7):
 		count += 1
@@ -71,6 +62,9 @@ def incrementDays(months:list[str], dayDisplay, pickYear, pickMonth) -> list[str
 		
 
 	for i in range(0, len(numStore)): # Add numbers from numStore list and import them to weeks
+
+		# add day of week to date
+
 		weeks = {weekList[0]: numStore[i][0], weekList[1]: numStore[i][1],
 		weekList[2]: numStore[i][2], weekList[3]: numStore[i][3], 
 		weekList[4]: numStore[i][4], weekList[5]: numStore[i][5], weekList[6]: numStore[i][6]}
