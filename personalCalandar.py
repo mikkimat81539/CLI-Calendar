@@ -7,6 +7,7 @@ def similarMonths(months:list[str], pickMonth) -> list[str]:
 
 		# The program needs to return what closely matches the user input
 		if same:
+			# print(months.index(pickMonth))
 			return i
 
 # This function is here to determine whether the year is a leap year and to display the number of days in the selected month
@@ -22,21 +23,42 @@ def dayData(days:dict[str,int], timeFrame, leapYr) -> dict[str,int]:
 			return value
 
 # This function is created to increment the days and output the days with the weekday
-def incrementDays(dayDisplay):
+def incrementDays(months:list[str], dayDisplay, pickYear, pickMonth) -> list[str]:
 	numStore = []
 	dayList = []
 	weekList = []
 
+#	for i in range(43):
+#		i += 1 # The index needs to start at 1 and increment
+#		if len(dayList) == 7: # Once the dayList has a length of 7, store data in numStore list and make dayList empty
+#			numStore.append(dayList)
+#			dayList = []
+#
+#		if i > dayDisplay: # if i is greated than 29, 30 or 31 than replace with empty string
+#			i = ""
+#
+#		dayList.append(i)
+#
+
+	monthIndex = months.index(pickMonth) + 1
+	print(f"This is the month index {monthIndex}")
+	
+	count = 0
+
 	for i in range(43):
-		i += 1 # The index needs to start at 1 and increment
-		if len(dayList) == 7: # Once the dayList has a length of 7, store data in numStore list and make dayList empty
+		count += 1
+		if count > dayDisplay:
+			i = ""
+			dayList.append(i)
+
+		else:
+			x = datetime.datetime(int(pickYear), int(monthIndex), count)
+			dayList.append(int(x.strftime("%d")))
+
+
+		if len(dayList) == 7:
 			numStore.append(dayList)
 			dayList = []
-
-		if i > dayDisplay: # if i is greated than 29, 30 or 31 than replace with empty string
-			i = ""
-
-		dayList.append(i)
 
 	# WEEKS
 	for i in range(0, len(numStore)): # Add numbers from numStore list and import them to weeks
@@ -46,8 +68,7 @@ def incrementDays(dayDisplay):
 
 		weekList.append(weeks) # add the dictionary into weeksList
 
-	return weekList
-
+	return weekList, pickYear, pickMonth
 
 def main():
 	# INPUT YEAR
@@ -89,8 +110,8 @@ def main():
 		timeFrame = similarMonths(months, pickMonth), pickYear # Output month and year that the user inputted
 		dayDisplay = dayData(days, timeFrame, leapYr) # Output the number of days associated with the selected month
 
-		weekDisplay = incrementDays(dayDisplay) # output the weeks linked to the number of days being outputted
+		weekDisplay = incrementDays(months, dayDisplay, pickYear, pickMonth) # output the weeks linked to the number of days being outputted
 
-		print(timeFrame, f"Day: {weekDisplay}")
+		print(timeFrame, f"Day: {weekDisplay[0]}")
 
 main()
