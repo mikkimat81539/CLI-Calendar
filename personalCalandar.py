@@ -28,6 +28,8 @@ def incrementDays(months:list[str], dayDisplay, pickYear, pickMonth) -> list[str
 	dayList = []
 	weekList = []
 
+	weekDay = []
+
 #	for i in range(43):
 #		i += 1 # The index needs to start at 1 and increment
 #		if len(dayList) == 7: # Once the dayList has a length of 7, store data in numStore list and make dayList empty
@@ -41,7 +43,6 @@ def incrementDays(months:list[str], dayDisplay, pickYear, pickMonth) -> list[str
 #
 
 	monthIndex = months.index(pickMonth) + 1
-	print(f"This is the month index {monthIndex}")
 	
 	count = 0
 
@@ -60,15 +61,23 @@ def incrementDays(months:list[str], dayDisplay, pickYear, pickMonth) -> list[str
 			numStore.append(dayList)
 			dayList = []
 
+	count = 0
 	# WEEKS
+	for i in range(0, 7):
+		count += 1
+		x = datetime.datetime(int(pickYear), int(monthIndex), count)
+		weekList.append(x.strftime("%a"))
+		
+		
+
 	for i in range(0, len(numStore)): # Add numbers from numStore list and import them to weeks
-		weeks = {"Sun": numStore[i][0], "Mon": numStore[i][1],
-		"Tue": numStore[i][2], "Wed": numStore[i][3], 
-		"Thu": numStore[i][4], "Fri": numStore[i][5], "Sat": numStore[i][6]}
+		weeks = {weekList[0]: numStore[i][0], weekList[1]: numStore[i][1],
+		weekList[2]: numStore[i][2], weekList[3]: numStore[i][3], 
+		weekList[4]: numStore[i][4], weekList[5]: numStore[i][5], weekList[6]: numStore[i][6]}
 
-		weekList.append(weeks) # add the dictionary into weeksList
+		weekDay.append(weeks)
 
-	return weekList, pickYear, pickMonth
+	return weekDay, pickYear, pickMonth
 
 def main():
 	# INPUT YEAR
